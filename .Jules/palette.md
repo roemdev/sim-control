@@ -1,0 +1,3 @@
+## 2024-05-14 - Decorative Elements in Framework Boilerplates Need A11y
+**Learning:** Standard framework boilerplates often include complex SVG graphics and "stylized" structural elements (like custom list bullets built with spans) that act purely as visual decoration. By default, these can create excessive "noise" or confusing output for screen readers if not properly hidden using `aria-hidden="true"`. Conversely, primary branding elements like logos often lack proper `role="img"` and `aria-label`.
+**Action:** When reviewing standard boilerplate templates, always check complex decorative SVGs and custom CSS shapes for `aria-hidden="true"`, and ensure main logos have proper descriptions.
