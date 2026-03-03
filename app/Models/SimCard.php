@@ -28,8 +28,16 @@ class SimCard extends Model
     // Automatización: Se ejecuta cada vez que creas, actualizas o eliminas un SIM
     protected static function booted()
     {
-        static::saved(function ($simCard) {
+        static::created(function ($simCard) {
+            // ⚡ Bolt: Recalcular stock cuando se crea un nuevo SIM
             $simCard->producto->recalcularStock();
+        });
+
+        static::updated(function ($simCard) {
+            // ⚡ Bolt: Solo recalcular stock si cambió su estado o tipo de producto
+            if ($simCard->wasChanged(['estado', 'producto_id'])) {
+                $simCard->producto->recalcularStock();
+            }
         });
 
         static::deleted(function ($simCard) {
