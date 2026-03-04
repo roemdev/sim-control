@@ -8,12 +8,12 @@ class SolicitudSim extends Model
 {
     // Agregamos 'codigo' al fillable para evitar errores de asignación masiva
     protected $fillable = [
-        'codigo', 
-        'cliente', 
-        'producto_id', 
-        'cantidad', 
-        'user_id', 
-        'estado'
+        'codigo',
+        'cliente',
+        'producto_id',
+        'cantidad',
+        'user_id',
+        'estado',
     ];
 
     // Método para generar el código automáticamente al crear un registro
@@ -21,7 +21,7 @@ class SolicitudSim extends Model
     {
         static::creating(function ($solicitud) {
             // Genera algo como: SOL-260303-A1B2
-            $solicitud->codigo = 'SOL-' . date('ymd') . '-' . strtoupper(bin2hex(random_bytes(2)));
+            $solicitud->codigo = 'SOL-'.date('ymd').'-'.strtoupper(bin2hex(random_bytes(2)));
         });
     }
 

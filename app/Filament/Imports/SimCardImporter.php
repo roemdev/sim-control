@@ -14,21 +14,21 @@ class SimCardImporter extends Importer
     public static function getColumns(): array
     {
         return [
-        ImportColumn::make('serial_number')
-            ->requiredMapping()
-            ->rules(['required', 'unique:sim_cards,serial_number'])
-            ->label('SN o ICCID'),
-            
-        ImportColumn::make('numero_telefono')
-            ->requiredMapping()
-            ->rules(['required', 'unique:sim_cards,numero_telefono'])
-            ->label('Número de Teléfono'),
-            
-        ImportColumn::make('producto_id')
-            ->requiredMapping()
-            ->numeric()
-            ->label('ID del Producto'),
-    ];
+            ImportColumn::make('serial_number')
+                ->requiredMapping()
+                ->rules(['required', 'unique:sim_cards,serial_number'])
+                ->label('SN o ICCID'),
+
+            ImportColumn::make('numero_telefono')
+                ->requiredMapping()
+                ->rules(['required', 'unique:sim_cards,numero_telefono'])
+                ->label('Número de Teléfono'),
+
+            ImportColumn::make('producto_id')
+                ->requiredMapping()
+                ->numeric()
+                ->label('ID del Producto'),
+        ];
     }
 
     public function resolveRecord(): ?SimCard
@@ -40,10 +40,10 @@ class SimCardImporter extends Importer
 
     public static function getCompletedNotificationBody(Import $import): string
     {
-        $body = 'La importación finalizó. ' . number_format($import->successful_rows) . ' registros importados.';
+        $body = 'La importación finalizó. '.number_format($import->successful_rows).' registros importados.';
 
         if ($failedRowsCount = $import->getFailedRowsCount()) {
-            $body .= ' ' . number_format($failedRowsCount) . ' filas fallaron.';
+            $body .= ' '.number_format($failedRowsCount).' filas fallaron.';
         }
 
         return $body;

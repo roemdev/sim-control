@@ -12,7 +12,8 @@ class ProductoForm
         return $schema
             ->components([
                 TextInput::make('nombre')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 TextInput::make('stock')
                     ->required()
                     ->numeric()
