@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources\SolicitudSims\Tables;
 
-use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class SolicitudSimsTable
 {

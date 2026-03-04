@@ -13,13 +13,13 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\BadgeColumn;
 
 class SolicitudSimResource extends Resource
 {
     protected static ?string $modelLabel = 'Solicitud';
+
     protected static ?string $pluralModelLabel = 'Solicitudes de SIMs';
+
     protected static ?string $navigationLabel = 'Solicitudes';
 
     protected static ?string $model = SolicitudSim::class;

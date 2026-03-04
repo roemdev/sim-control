@@ -1,0 +1,4 @@
+## 2024-05-24 - [IDOR Vulnerability in Form Submission]
+**Vulnerability:** A `Hidden` field was used to submit the `user_id` from the client-side. This allows a user to modify the payload and set `user_id` to any value.
+**Learning:** Even though the server-side has a `mutateFormDataBeforeCreate` method that assigns the user id (`$data['user_id'] = auth()->id()`), removing the required field from the form means that if that server logic is missing or the form component is reused differently, a database integrity error occurs (or worst, IDOR happens if server validation doesn't overwrite it).
+**Prevention:** Avoid defining sensitive, immutable attributes in client-facing forms if they can be exclusively and securely assigned server-side. Ensure that server-side population methods handle these attributes properly to fulfill database constraints.

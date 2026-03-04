@@ -13,10 +13,12 @@ class SimCardForm
         return $schema
             ->components([
                 TextInput::make('serial_number')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 TextInput::make('numero_telefono')
                     ->tel()
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord: true),
                 TextInput::make('producto_id')
                     ->required()
                     ->numeric(),

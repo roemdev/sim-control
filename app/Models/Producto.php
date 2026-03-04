@@ -18,7 +18,7 @@ class Producto extends Model
     public function recalcularStock()
     {
         $this->update([
-            'stock' => $this->simCards()->where('estado', 'disponible')->count()
+            'stock' => $this->simCards()->where('estado', 'disponible')->count(),
         ]);
     }
 }

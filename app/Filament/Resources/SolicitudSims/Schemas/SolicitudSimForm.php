@@ -2,11 +2,10 @@
 
 namespace App\Filament\Resources\SolicitudSims\Schemas;
 
-use Filament\Schemas\Schema;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Hidden;
 use App\Models\SolicitudSim;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 
 class SolicitudSimForm
 {
@@ -39,11 +38,6 @@ class SolicitudSimForm
                     ->options(SolicitudSim::opcionesEstado())
                     ->default('pendiente')
                     ->native(false)
-                    ->required(),
-
-                // Guarda automáticamente el ID del usuario actual
-                Hidden::make('user_id')
-                    ->default(auth()->id())
                     ->required(),
             ]);
     }

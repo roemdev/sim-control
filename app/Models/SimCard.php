@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class SimCard extends Model
 {
     protected $fillable = [
-        'serial_number', 
-        'numero_telefono', 
-        'producto_id', 
-        'estado', 
-        'solicitud_sim_id', 
-        'fecha_asignacion'
+        'serial_number',
+        'numero_telefono',
+        'producto_id',
+        'estado',
+        'solicitud_sim_id',
+        'fecha_asignacion',
     ];
 
     public function producto()
