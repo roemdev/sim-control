@@ -7,7 +7,6 @@ use App\Filament\Resources\DespachoSims\Pages\ManageDespachoSims;
 use App\Models\DespachoSim;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
@@ -16,17 +15,18 @@ use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Actions\ImportAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Schemas\Schema;
 
 class DespachoSimResource extends Resource
 {
     protected static ?string $model = DespachoSim::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('serial_number')
                     ->required()
                     ->exists('sim_cards', 'serial_number')
